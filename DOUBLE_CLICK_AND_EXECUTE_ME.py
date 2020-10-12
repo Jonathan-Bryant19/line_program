@@ -70,7 +70,7 @@ heading_frame.pack()
 number_frames[1].pack()
 
 # Global variables
-my_counter = 5  # Sets the counter for how many times a label flashes
+my_counter = 25  # Sets the counter for how many times a label flashes
 
 # NEXT WINDOW flashing method
 row_label_colors = [["red", "white"],["orange", "white"]]
@@ -141,7 +141,7 @@ GPIO.setmode(GPIO.BOARD) # Use physical pin numbering
 
 for pin, num in gpio_mappings.items():
     GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    GPIO.add_event_detect(pin, GPIO.BOTH, callback=lambda x: flash_number(gpio_mappings[x]))
+    GPIO.add_event_detect(pin, GPIO.BOTH, callback=lambda x: flash_number(gpio_mappings[x]), bouncetime=300)
 
 
 # Resize window when 'esc' is pressed
